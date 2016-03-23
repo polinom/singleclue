@@ -54,7 +54,13 @@ module.exports = {
     }, {
       test   : /[\/]ionic\.js$/,
       loader : 'exports?ionic'
-    }]
+    }, { 
+      test: /\.png*/, 
+      loader: 'file' 
+    }, { 
+      test: /\.jpg*/, 
+      loader: 'file'}
+   ]
   },
 
   resolve: {

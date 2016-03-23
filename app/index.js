@@ -15,7 +15,8 @@ var appModule = module.exports = angular
   .module('app', [
     libsModule.name,
     require('./layout').name,
-    require('./tasks').name
+    require('./tasks').name,
+    require('./spynames').name
   ])
 
   .constant('version', require('../package.json').version)
@@ -28,7 +29,7 @@ var appModule = module.exports = angular
   })
 
   .config(function ($urlRouterProvider) {
-    $urlRouterProvider.otherwise('/tasks');
+    $urlRouterProvider.otherwise('/start');
   })
 
   .run(function ($log, $rootScope, $ionicBackdrop, $timeout) {
@@ -78,7 +79,7 @@ var appModule = module.exports = angular
   });
 
 // Add the styles to the page
-require('./index.scss');
+// require('./index.scss');
 
 // Bootstrap App Module
 libsModule.ionicBootstrap(appModule, global);
