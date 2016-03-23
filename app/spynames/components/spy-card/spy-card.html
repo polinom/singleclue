@@ -1,0 +1,22 @@
+
+<div class="spycard">
+    <div class="m-header">
+		<a href="#" class="btn-back"></a>
+		<div class="top-line"><span class="page-title">Game {{$scope.game.code}}</span></div>
+		<div class="top-line-end"></div>
+	</div>
+
+	<div class="m-container">
+		<div ng-class="{off: card.opened}" ng-repeat="card in game.getCardColor('red')" class="m-card red">{{card.name}}</div>
+	</div>
+	<div class="m-container">
+		<div ng-class="{off: card.opened}" ng-repeat="card in game.getCardColor('blue')" class="m-card blue">{{card.name}}</div>
+	</div>
+	<div class="m-container">
+		<div ng-class="{off: card.opened}" ng-repeat="card in game.getCardColor('citizen')" class="m-card neutral">{{card.name}}</div>
+	</div>
+
+    <div class="m-container">
+		<div ng-class="{off: card.opened}" ng-repeat="card in game.getCardColor('assassin')" class="m-card death">{{card.name}}</div>
+	</div>
+</div>

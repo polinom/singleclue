@@ -1,0 +1,13 @@
+<div class="spycard">
+
+	<div class="player-indicator red"></div>
+
+	<div class="spycard-container">
+		<div class="spycard-box {{card.color}}" ng-repeat="card in startJoin.miniCards"></div>
+		<div class="clearfix"></div>
+	</div>
+
+    <a class="btn-join" ng-click="startJoin.startGame()">New</a>
+    <a class="btn-join" ui-sref="joinGame()">Join</a>
+
+</div>

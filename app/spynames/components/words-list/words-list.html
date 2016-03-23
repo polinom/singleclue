@@ -1,0 +1,10 @@
+<form>
+  <label>Word: </label>
+  <input type="text" ng-model="newWord" />
+  <button ng-click="addWord()">Add</button>
+</form>
+<br>
+<div style="display: inline; color: white;" ng-repeat="word in words">
+    {{word.$value}}
+    <button ng-click="words.$remove(word)">X</button>
+</div>
