@@ -40,6 +40,7 @@ angular.module('spynames').
                 game.blueAgent = false;
                 game.redAgent = false;
                 game.gameDone = false;
+                game.winner = null;
                 game.cardsOpened = {
                     'blue': 8,
                     'red': 9,

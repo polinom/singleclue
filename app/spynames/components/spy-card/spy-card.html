@@ -1,22 +1,18 @@
-
-<div class="spycard">
-    <div class="m-header">
-		<a href="#" class="btn-back"></a>
-		<div class="top-line"><span class="page-title">Game {{$scope.game.code}}</span></div>
-		<div class="top-line-end"></div>
+<div class="top-line"></div>
+<div class="utilities-wrapper">
+	<div class="utilities">
+	<a ui-sref="start" class="logo-menu"></a>
+	<div class="player-indicator" ng-class="{'blue': game.whosTurn == 'blue', 'red': game.whosTurn == 'red'}"></div>
+	<div class="game-code">{{game.code}}</div>
 	</div>
-
-	<div class="m-container">
-		<div ng-class="{off: card.opened}" ng-repeat="card in game.getCardColor('red')" class="m-card red">{{card.name}}</div>
-	</div>
-	<div class="m-container">
-		<div ng-class="{off: card.opened}" ng-repeat="card in game.getCardColor('blue')" class="m-card blue">{{card.name}}</div>
-	</div>
-	<div class="m-container">
-		<div ng-class="{off: card.opened}" ng-repeat="card in game.getCardColor('citizen')" class="m-card neutral">{{card.name}}</div>
-	</div>
-
-    <div class="m-container">
-		<div ng-class="{off: card.opened}" ng-repeat="card in game.getCardColor('assassin')" class="m-card death">{{card.name}}</div>
+</div><!--utilities-wrapper-->
+<div class="game-table">
+	<div class="container">
+		<div class="card-container">
+			<div class="card" ng-class="{'red-off': card.opened, 'red-on': !card.opened}" ng-repeat="card in game.getCardColor('red')"><span class="spy">{{card.name}}</span></div>
+			<div class="card" ng-class="{'blue-off': card.opened, 'blue-on': !card.opened}" ng-repeat="card in game.getCardColor('blue')"><span class="spy">{{card.name}}</span></div>
+			<div class="card" ng-class="{'citizen-off': card.opened, 'citizen-on': !card.opened}" ng-repeat="card in game.getCardColor('citizen')"><span class="spy">{{card.name}}</span></div>
+			<div class="card assassin" ng-repeat="card in game.getCardColor('assassin')"><span class="spy">{{card.name}}</span></div>
+		</div>
 	</div>
 </div>

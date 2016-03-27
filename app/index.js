@@ -15,7 +15,7 @@ var appModule = module.exports = angular
   .module('app', [
     libsModule.name,
     require('./layout').name,
-    require('./tasks').name,
+    //require('./tasks').name,
     require('./spynames').name
   ])
 

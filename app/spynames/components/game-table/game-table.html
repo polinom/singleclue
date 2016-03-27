@@ -1,30 +1,26 @@
+<div class="top-line"></div>
+<div class="utilities-wrapper">
+  <div class="utilities">
+      <a ui-sref="start" class="logo-menu"></a>
+      <div class="player-indicator" ng-class="{'blue': game.whosTurn == 'blue', 'red': game.whosTurn == 'red'}"></div>
+      <a class="btn-end-turn" ng-click="game.whosTurn = game.whosTurn === 'blue'?'red':'blue';">End Turn</a>
+      <a ng-click="restartGame()" class="btn-restart"></a>
+    <div class="game-code">{{game.code}}</div>
+  </div>
+</div><!--utilities-wrapper-->
 <div class="game-table">
-	<div class="container">
-        <div class="btn-red"
-             ng-class="{light: game.whosTurn == 'red'}"
-             ng-click="game.whosTurn = 'red';">
-        </div>
-        <div class="utilities">
-            <a class="btn-restart" ng-click="restartGame()">Restart</a>
-        </div>
-        <div class="btn-blue"
-             ng-class="{light: game.whosTurn == 'blue'}"
-             ng-click="game.whosTurn = 'blue';">
-        </div>
-        <div class="clearfix"></div>
-        <div class="card-container">
+<div class="container">
+    <div class="card-container">
 
-            <div class="card" ng-repeat="card in game.cards" ng-click="openCard(card)">
-                <div class="word-top">{{card.name | capitalize}}</div>
-                <div class="word-bottom">{{card.name | capitalize}}</div>
-                <div class="character red" ng-if="card.opened && card.color === 'red'"></div>
-                <div class="character blue" ng-if="card.opened && card.color === 'blue'"></div>
-                <div class="character citizen" ng-if="card.opened && card.color === 'citizen'"></div>
-                <div class="character assassin" ng-if="card.opened && card.color === 'assassin'"></div>
-            </div>
-
+        <div class="card"
+             ng-repeat="card in game.cards"
+             ng-click="openCard(card)"
+             ng-class="{'assassin': card.opened && card.color === 'assassin', 'citizen-on': card.opened && card.color === 'citizen', 'blue-on': card.opened && card.color === 'blue', 'red-on': card.opened && card.color === 'red'}">
+            <span class="board">{{card.name | capitalize}}</span>
         </div>
-        <div class="code-box">{{game.code}}</div>
-	</div>
+
+    </div>
 </div>
+</div>
+
 

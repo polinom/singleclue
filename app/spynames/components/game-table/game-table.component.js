@@ -17,6 +17,7 @@ angular.module('spynames').directive('gameTable', function () {
       $scope.restartGame = function () {
         $scope.resetGameState();
         gameService.createGame($stateParams.code);
+        $scope.game.$save()
       };
 
       $scope.flashWinner = function (color) {
@@ -33,7 +34,9 @@ angular.module('spynames').directive('gameTable', function () {
 
       $scope.openCard = function (card) {
         card.opened = true;
-        if ($scope.gameDone) return;
+        if ($scope.game.gameDone) {
+            return;
+        }
         $scope.game.cardsOpened[card.color] -= 1;
         $scope.changeState(card);
         $scope.game.$save(); // remove this line if you don't want sync board state
@@ -41,11 +44,13 @@ angular.module('spynames').directive('gameTable', function () {
 
       $scope.changeState = function (card) {
 
-        var winner = $scope.isGameEndCondition();
+        console.log($scope.game.winner);
 
-        if (winner) {
+        $scope.game.winner = $scope.isGameEndCondition();
+
+        if ($scope.game.winner) {
            $scope.game.gameDone = true;
-           $scope.flashWinner(winner);
+           $scope.flashWinner($scope.game.winner);
         }
 
         // if current user did not pick his collor than turn changes
@@ -62,6 +67,7 @@ angular.module('spynames').directive('gameTable', function () {
           } else if (!$scope.game.cardsOpened['assassin']) {
               return $scope.game.whosTurn === 'blue'?'red':'blue';
           }
+          return null;
       }
     }
   }
