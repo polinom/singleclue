@@ -24,20 +24,20 @@ angular.module('spynames').directive('spyCard', function () {
         if ($scope.game.gameDone) {
            if ($scope.game.winner) {
              $scope.flashWinner($scope.game.winner)
-           } else {
-             resetGameState()
            }
+        } else {
+          $scope.resetGameState()
         }
       });
 
       $scope.flashWinner = function (color) {
           lightOff = function (mlsec) {
               $scope.game.whosTurn = null;
-              $scope.prms1 = $timeout(function () {lightOn(color, 200);}, mlsec)
+              $scope.prms = $timeout(function () {lightOn(color, 200);}, mlsec)
           };
           lightOn = function (color, mlsec) {
               $scope.game.whosTurn = color;
-              $scope.prms2 = $timeout(function () {lightOff(200);}, mlsec)
+              $scope.prms = $timeout(function () {lightOff(200);}, mlsec)
           };
           lightOn();
       };
