@@ -16,7 +16,6 @@
 			<div class="card" ng-class="{'orange-off': card.opened, 'orange-on': !card.opened}" ng-repeat="card in game.getCardColor('orange')"><span class="spy">{{card.name}}</span></div>
 			<div class="card" ng-class="{'green-off': card.opened, 'green-on': !card.opened}" ng-repeat="card in game.getCardColor('green')"><span class="spy">{{card.name}}</span></div>
 			<div class="card" ng-class="{'red-off': card.opened, 'red-on': !card.opened}" ng-repeat="card in game.getCardColor('red')"><span class="spy">{{card.name}}</span></div>
-			<div class="card" ng-repeat="card in game.getCardColor('assassin')"><span class="spy">{{card.name}}</span></div>
 		</div>
 	</div>
 </div>

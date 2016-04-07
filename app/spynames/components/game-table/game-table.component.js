@@ -16,8 +16,7 @@ angular.module('spynames').directive('gameTable', function () {
 
       $scope.restartGame = function () {
         $scope.resetGameState();
-        gameService.createGame($stateParams.code);
-        $scope.game.$save()
+        gameService.createGame($stateParams.code, $scope.game.teams);
       };
 
       $scope.flashWinner = function (color) {
