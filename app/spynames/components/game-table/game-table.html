@@ -2,8 +2,11 @@
 <div class="utilities-wrapper">
   <div class="utilities">
       <a ui-sref="start" class="logo-menu"></a>
-      <div class="player-indicator" ng-class="{'blue': game.whosTurn == 'blue', 'red': game.whosTurn == 'red'}"></div>
-      <a class="btn-end-turn" ng-click="game.whosTurn = game.whosTurn === 'blue'?'red':'blue';">End Turn</a>
+        <div class="player-indicator" ng-class="{'blue-on': game.whosTurn == 'blue', 'blue-off': game.whosTurn != 'blue'}"></div>
+        <div class="player-indicator" ng-class="{'green-on': game.whosTurn == 'green', 'green-off': game.whosTurn != 'green'}"></div>
+        <div class="player-indicator" ng-if="game.teams > 2" ng-class="{'orange-on': game.whosTurn == 'orange', 'orange-off': game.whosTurn != 'orange'}"></div>
+        <div class="player-indicator" ng-if="game.teams > 3" ng-class="{'red-on': game.whosTurn == 'red', 'red-off': game.whosTurn != 'red'}"></div>
+      <a class="btn-end-turn" ng-click="game.whosTurn = getNextColor()">End Turn</a>
       <a ng-click="restartGame()" class="btn-restart"></a>
     <div class="game-code">{{game.code}}</div>
   </div>
@@ -15,7 +18,7 @@
         <div class="card"
              ng-repeat="card in game.cards"
              ng-click="openCard(card)"
-             ng-class="{'assassin': card.opened && card.color === 'assassin', 'citizen-on': card.opened && card.color === 'citizen', 'blue-on': card.opened && card.color === 'blue', 'red-on': card.opened && card.color === 'red'}">
+             ng-class="{'green-on': card.opened && card.color === 'green', 'orange-on': card.opened && card.color === 'orange', 'blue-on': card.opened && card.color === 'blue', 'red-on': card.opened && card.color === 'red'}">
             <span class="board">{{card.name | capitalize}}</span>
         </div>
 

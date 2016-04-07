@@ -4,7 +4,7 @@ angular.module('spynames').directive('gameTable', function () {
     restrict: 'E',
     template: template,
     controllerAs: 'gameTable',
-    controller: function ($scope, $stateParams, $state, $timeout, gameService) {
+    controller: function ($scope, $stateParams, $state, $timeout, gameService, COLORS) {
 
       $scope.game = gameService.getGame($stateParams.code);
 
@@ -44,7 +44,8 @@ angular.module('spynames').directive('gameTable', function () {
 
       $scope.changeState = function (card) {
 
-        console.log($scope.game.winner);
+        console.log('game ends = ');
+        console.log($scope.isGameEndCondition());
 
         $scope.game.winner = $scope.isGameEndCondition();
 
@@ -53,21 +54,29 @@ angular.module('spynames').directive('gameTable', function () {
            $scope.flashWinner($scope.game.winner);
         }
 
-        // if current user did not pick his collor than turn changes
+        // if current user did not pick his color than turn changes
         if ($scope.game.whosTurn !== card.color) {
-            $scope.game.whosTurn = $scope.game.whosTurn === 'blue'?'red':'blue';
+            $scope.game.whosTurn = $scope.getNextColor();
         }
       };
 
+      $scope.getNextColor = function () {
+          var nextIndex = (COLORS.indexOf($scope.game.whosTurn) + 1) % $scope.game.teams;
+          return COLORS[nextIndex];
+      };
+
+    /**
+     * Returns color of the winner or null
+     * @returns {*}
+     */
       $scope.isGameEndCondition = function () {
-          if (!$scope.game.cardsOpened['red']) {
-              return 'red';
-          } else if (!$scope.game.cardsOpened['blue']) {
-              return 'blue';
-          } else if (!$scope.game.cardsOpened['assassin']) {
-              return $scope.game.whosTurn === 'blue'?'red':'blue';
-          }
-          return null;
+          var winner = null;
+          COLORS.forEach(function(color) {
+              if ($scope.game.cardsOpened[color] === 0) {
+                  winner = color;
+              }
+          });
+          return winner;
       }
     }
   }

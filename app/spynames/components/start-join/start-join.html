@@ -1,12 +1,33 @@
 <div class="start-page">
 	<div class="spycard">
+		<a class="rules">Rules</a>
+		<div class="clearfix"></div>
 		<div class="logo"></div>
-		<a ng-click="startJoin.startGame()" class="btn-start">New Game</a>
-		<div ng-if="error">{{error}}</div>
+		<div class="main-title">New Game</div>
+
+		<div class="teams-container">
+			<a ng-click="startJoin.startGame(2)" class="btn-start team-2">
+				<div class="team-number">2</div>
+				<div class="team-word">Teams</div>
+			</a>
+			<a ng-click="startJoin.startGame(3)" class="btn-start team-3">
+				<div class="team-number">3</div>
+				<div class="team-word">Teams</div>
+			</a>
+			<a ng-click="startJoin.startGame(4)" class="btn-start team-4">
+				<div class="team-number">4</div>
+				<div class="team-word">Teams</div>
+			</a>
+			<div class="clearfix"></div>
+		</div>
+
+		<div class="main-title">Join as Word Master</div>
 		<div class="master-card">
 			<input class="code-box-start" ng-model="code" placeholder="Enter Game ID" />
 			<a ng-click="buttonJoinGame()" class="btn-join">Join</a>
 			<div class="clearfix"></div>
+			<div class="error" ng-if="error">{{error}}</div>
 		</div>
 	</div>
 </div>
+<div class="clearfix"></div>

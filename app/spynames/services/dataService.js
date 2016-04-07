@@ -2,6 +2,7 @@ var _ = require('lodash');
 
 angular.module('spynames').
     constant('FIREBASE_ENDPOINT', "https://spynames.firebaseio.com").
+    constant('COLORS', ['blue', 'green', 'orange', 'red']).
     factory('dataService', function (FIREBASE_ENDPOINT) {
         return {
             'getRootRef' : function () {
@@ -10,7 +11,7 @@ angular.module('spynames').
         };
     }).
 
-    factory('gameService', function (FIREBASE_ENDPOINT, dataService, $http, $firebaseObject) {
+    factory('gameService', function (FIREBASE_ENDPOINT, dataService, $http, $firebaseObject, COLORS) {
 
     var Game = $firebaseObject.$extend({
         getCardColor: function (color) {
@@ -19,34 +20,32 @@ angular.module('spynames').
     });
 
     return {
+
+        'counters': {},
+
         'getGame': function (code) {
             return new Game(dataService.getRootRef().child('games/' + code));
         },
 
-        'createGame' : function (code) {
+        'createGame' : function (code, teams) {
             if (!code) {
               code = this.getRandomInt(1000, 9999);
             }
+            var cardsPerPlayer = 24 / teams;
+
             var that = this;
             return this.getAllCards().then(function (resp) {
                 var allCards = _.map(resp.data, function (val, key) {return {'name': val, 'id': key}});
-                var cards = that.getRandom25Cards(allCards);
+                var cards = that.getRandom25Cards(allCards, cardsPerPlayer);
                 var game = that.getGame(code);
-
                 game.code = code.toString();
                 game.createdAt = new Date();
                 game.cards = cards;
-                game.whosTurn = 'red';
-                game.blueAgent = false;
-                game.redAgent = false;
+                game.whosTurn = 'blue';
                 game.gameDone = false;
                 game.winner = null;
-                game.cardsOpened = {
-                    'blue': 8,
-                    'red': 9,
-                    'assassin': 1,
-                    'citizen': 7
-                };
+                game.cardsOpened = that.counters;
+                game.teams = teams;
                 game.$save();
                 return code.toString();
             });
@@ -56,36 +55,34 @@ angular.module('spynames').
             return $http({method: 'GET', url: FIREBASE_ENDPOINT + '/nouns.json'});
         },
 
-        'getRandom25Cards': function (availableCards) {
-              console.log(_);
+        'getRandom25Cards': function (availableCards, cardsPerPlayer) {
 
-              var redCards = _.sampleSize(availableCards, 9);
-              redCards.forEach(function (card) { card.color = 'red' });
+             var cardsRemained = 24,
+                 allCards = [],
+                 that = this;
 
-              availableCards = _.filter(availableCards, function (card) {
-                  return !_.includes(redCards, card);
-              });
+             COLORS.forEach(function (color) {
 
-              var blueCards = _.sampleSize(availableCards, 8);
-              blueCards.forEach(function (card) { card.color = 'blue' });
+                 if (cardsRemained) {
 
-              availableCards = _.filter(availableCards, function (card) {
-                  return !_.includes(blueCards, card);
-              });
+                     that.counters[color] = cardsPerPlayer;
 
-              var blackCard = _.sampleSize(availableCards, 1);
-              blackCard.forEach(function (card) { card.color = 'assassin' });
+                     var colorCards = _.sampleSize(availableCards, cardsPerPlayer);
 
-              availableCards = _.filter(availableCards, function (card) {
-                  return !_.includes(blackCard, card);
-              });
+                     colorCards.forEach(function (card) {
+                         card.color = color;
+                         cardsRemained--
+                     });
 
-              var sitizenCards = _.sampleSize(availableCards, 7);
-              sitizenCards.forEach(function (card) { card.color = 'citizen' });
+                     availableCards = _.filter(availableCards, function (card) {
+                         return !_.includes(colorCards, card);
+                     });
 
-              var allCards = redCards.concat(blueCards, blackCard, sitizenCards);
+                     allCards = allCards.concat(colorCards);
+                 }
+             });
 
-              return _.shuffle(allCards);
+             return _.shuffle(allCards);
         },
 
         'getRandomInt': function (min, max) {

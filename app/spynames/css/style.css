@@ -29,41 +29,121 @@ html, body {
 /*	Start Page
 /*-----------------------------------------------------------------------------------*/
 
+/*Update these classes*/
+
+.spycard {
+	width:320px;
+	margin:0 auto;
+	text-align:center;
+}
+a.rules,
+a.rules:link,
+a.rules:visited {
+	float:right;
+	clear:both;
+	margin:20px 20px 0 0;
+	height:20px;
+	line-height:20px;
+	color:#fff;
+}
 .logo {
-	width:269px;
 	height:275px;
-	margin: 100px auto;
+	width:269px;
+	margin: 0 auto;
 	background:transparent url('images/logo.png') no-repeat center center;
+}
+.main-title {
+	width:100%;
+	height:20px;
+	line-height:20px;
+	text-align:center;
+	vertical-align:middle;
+	color:#fff;
+	font-size:15px;
+	margin:30px auto 15px auto;
+	font-weight:300;
+}
+.teams-container {
+	width:282px;
+	margin:0 auto;
 }
 a.btn-start,
 a.btn-start:link,
 a.btn-start:visited {
-	display:block;
-	margin:0 auto;
-	width:300px;
-	height:60px;
-	line-height:60px;
+	float:left;
+	margin:0 10px 10px 10px;
+	width:74px;
+	height:74px;
 	color:#fff;
 	font-weight:400;
-	font-size:16px;
 	text-decoration:none;
-	background:#1a832b;
-	border:1px solid #2aa63f;
-	border-radius:7px;
-	text-align:center;
+	border-radius:37px;
+	cursor: pointer;
 }
-a.btn-start:hover {
-	background:#229034;
+a.btn-start .team-number {
+	float:left;
+	width:74px;
+	height:35px;
+	line-height:35px;
+	margin:10px 0 0 0;
+	text-align:center;
+	vertical-align:middle;
+	font-size:30px;
+	color:#fff;
+	font-weight:300;
+}
+a.btn-start .team-word {
+	float:left;
+	width:74px;
+	height:16px;
+	line-height:16px;
+	font-size:11px;
+	text-transform:uppercase;
+	color:#fff;
+	font-weight:300;
+}
+a.btn-start.team-2,
+a.btn-start.team-2:link,
+a.btn-start.team-2:visited {
+	background:#109940;
+}
+a.btn-start.team-2:hover {
+	background:#16a949;
+}
+a.btn-start.team-3,
+a.btn-start.team-3:link,
+a.btn-start.team-3:visited {
+	background:#d49715;
+}
+a.btn-start.team-3:hover {
+	background:#e4a622;
+}
+a.btn-start.team-4,
+a.btn-start.team-4:link,
+a.btn-start.team-4:visited {
+	background:#d13910;
+}
+a.btn-start.team-4:hover {
+	background:#e24a22;
 }
 .master-card {
 	width:300px;
-	margin:30px auto;
+	margin:10px auto;
 	background:transparent url('images/icn-word-master.png') no-repeat 10px 10px;
 }
+.error {
+	font-size:13px;
+	color: #fff;
+	font-weight: 300;
+	color: #D66E6E;
+}
+
+/*End update classes*/
+
 input.code-box-start {
 	float:left;
 	height:50px;
-	width:165px;
+	width:150px;
 	margin:0 10px 15px 50px;
 	border-radius:7px;
 	background:#2a1e39;
@@ -79,22 +159,22 @@ input.code-box-start {
 ::-webkit-input-placeholder {
 	font-weight:300;
 	font-size:14px;
-    color: rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.10);
 }
 :-moz-placeholder { /* Firefox 18- */
     font-weight:300;
 	font-size:14px;
-    color: rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.10);
 }
 ::-moz-placeholder {  /* Firefox 19+ */
     font-weight:300;
 	font-size:14px;
-    color: rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.10);
 }
 :-ms-input-placeholder {  
    	font-weight:300;
 	font-size:14px;
-    color: rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.10);
 }
 a.btn-join,
 a.btn-join:link,
@@ -113,6 +193,7 @@ a.btn-join:visited {
 	color:#fff;
 	font-size:15px;
 	text-decoration:none;
+	cursor: pointer;
 }
 a.btn-join:hover {
 	text-decoration:none;
@@ -143,6 +224,7 @@ a.btn-join:hover {
 	border-radius:5px;
 	margin:0.5%;
 	background:#FBF3E5;
+	cursor:pointer;
 }
 .card span {
 	display:block;
@@ -176,22 +258,46 @@ a.btn-join:hover {
 	font-weight:400;
 	background:#913218;
 }
-.card.citizen-on {
+
+/*	Change citizen to orange */
+	
+.card.orange-on {
 	color:#fff;
-	background:#b4aba4;
+	background:#f49c02;
 }
-.card.citizen-on span.board {
+.card.orange-on span.board {
 	color:rgba(0,0,0,0.4);
 }
-.card.citizen-off {
+.card.orange-off {
 	color:rgba(0,0,0,0.4);
 	font-weight:400;
-	background:#6e6b67;
+	background:#9C5513;
 }
+
+/*	Add green style */
+	
+.card.green-on {
+	color:#fff;
+	background:#0cb648;
+}
+.card.green-on span.board {
+	color:rgba(0,0,0,0.4);
+}
+.card.green-off {
+	color:rgba(0,0,0,0.4);
+	font-weight:400;
+	background:#0e7633;
+}
+
+/* Remove assassin styles */
+
 .card.assassin {
 	color:#fff;
 	background:#1e1b21;
 }
+
+/* -- */
+
 .top-line {
 	height:10px;
 	width:100%;
@@ -209,25 +315,65 @@ a.btn-join:hover {
 	margin:0 auto;
 	text-align:center;
 }
+
+/*	Update styles below: utilities, player-indicator, btn-end-turn. 
+	Delete red and blue player indicator images - they're now done through CSS */
+	
 .utilities a.logo-menu,
 .utilities a.logo-menu:link,
 .utilities a.logo-menu:visited {
 	float:left;
 	width:130px;
 	height:60px;
-	background:transparent url('images/btn-menu.png') no-repeat center center;
+	margin:0 10px 0 10px;
+	background:transparent url('images/btn-menu.png') no-repeat left center;
 }
 .utilities .player-indicator {
 	float:left;
-	height:40px;
-	width:20px;
-	margin-left:35px;
+	height:12px;
+	width:12px;
+	margin:10px 5px;
+	border-radius:6px;
 }
-.utilities .player-indicator.blue {
-	background:transparent url('images/player-blue.png') no-repeat left 10px;
+.utilities .player-indicator.blue-on {
+	background:#1fc4d7;
+	border:2px solid #2f2241;
+	box-shadow: 0 0 0 2px #1fc4d7;
+	border-radius:8px;
+	margin: 8px 3px;
 }
-.utilities .player-indicator.red {
-	background:transparent url('images/player-red.png') no-repeat left 10px;
+.utilities .player-indicator.blue-off {
+	background:#1E4F5D;
+}
+.utilities .player-indicator.red-on {
+	background:#e24b16;
+	border:2px solid #2f2241;
+	box-shadow: 0 0 0 2px #e24b16;
+	border-radius:8px;
+	margin: 8px 3px;
+}
+.utilities .player-indicator.red-off {
+	background:#612B1C;
+}
+.utilities .player-indicator.green-on {
+	background:#0cb648;
+	border:2px solid #2f2241;
+	box-shadow: 0 0 0 2px #0cb648;
+	border-radius:8px;
+	margin: 8px 3px;
+}
+.utilities .player-indicator.green-off {
+	background:#15582D;
+}
+.utilities .player-indicator.orange-on {
+	background:#f49c02;
+	border:2px solid #2f2241;
+	box-shadow: 0 0 0 2px #f49c02;
+	border-radius:8px;
+	margin: 8px 3px;
+}
+.utilities .player-indicator.orange-off {
+	background:#69401B;
 }
 .utilities a.btn-end-turn,
 .utilities a.btn-end-turn:link,
@@ -242,16 +388,20 @@ a.btn-join:hover {
 	color:#fff;
 	font-size:13px;
 	text-decoration:none;
+	cursor: pointer;
 }
 .utilities a.btn-end-turn:hover {
 	background:#6c548c;
 }
+
+/* End update styles */
+
 .utilities a.btn-restart,
 .utilities a.btn-restart:link,
 .utilities a.btn-restart:visited {
 	float:right;
 	height:30px;
-	width:40px;
+	width:20px;
 	margin:0 10px 0 0;
 	background:transparent url('images/btn-restart.png') no-repeat center center;
 }
@@ -261,7 +411,7 @@ a.btn-join:hover {
 	line-height:30px;
 	color:#6e5c87;
 	font-size:13px;
-	margin:0 10px 0 0;
+	margin: 0 10px 0 0;
 }
 
 /*-----------------------------------------------------------------------------------*/
@@ -275,9 +425,6 @@ a.btn-join:hover {
 	.utilities {
 		width:100%;
 		background:transparent url('images/bkg-header.png') no-repeat -120px top;
-	}
-	.utilities .player-indicator {
-		margin-left:25px;
 	}
 	.card span {
 		font-size:14px;
@@ -311,8 +458,13 @@ a.btn-join:hover {
 		float:left;
 		width:30px;
 		height:30px;
-		margin:0 10px;
+		margin:10px 25px 0 15px;
 		background:transparent url('images/btn-menu.png') no-repeat left top;
+	}
+	.utilities a.btn-end-turn,
+	.utilities a.btn-end-turn:link,
+	.utilities a.btn-end-turn:visited {
+		margin:0 10px;
 	}
 	.card-container {
 		margin:0 10px;
@@ -345,7 +497,7 @@ only screen and (min-device-pixel-ratio: 2) {
 	.utilities a.logo-menu,
 	.utilities a.logo-menu:link,
 	.utilities a.logo-menu:visited {
-		background:transparent url('images/btn-menu@2x.png') no-repeat center center;
+		background:transparent url('images/btn-menu@2x.png') no-repeat left center;
 		background-size:115px 44px;
 	}
 	.utilities .player-indicator.blue {
