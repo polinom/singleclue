@@ -23,35 +23,48 @@ html, body {
 	background: -webkit-linear-gradient(top, #4a3566 10%,#22192e 100%); /* Chrome10-25,Safari5.1-6 */
 	background: linear-gradient(to bottom, #4a3566 10%,#22192e 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4a3566', endColorstr='#22192e',GradientType=0 ); /* IE6-9 */
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
 }
 
 /*-----------------------------------------------------------------------------------*/
 /*	Start Page
 /*-----------------------------------------------------------------------------------*/
 
-/*Update these classes*/
 
 .spycard {
 	width:320px;
 	margin:0 auto;
 	text-align:center;
 }
+
+/*	add rules buttons (2 classes below) */
+	
 a.rules,
 a.rules:link,
 a.rules:visited {
 	float:right;
-	clear:both;
-	margin:20px 20px 0 0;
-	height:20px;
-	line-height:20px;
-	color:#fff;
+	margin:10px 5px 0 0;
+	height:42px;
+	width:42px;
+	cursor:pointer;
+	background:transparent url('images/icn-rules-lg.png') no-repeat center center;
 }
+a.rules.header-rules,
+a.rules.header-rules:link,
+a.rules.header-rules:visited {
+	margin:0 15px 0 5px;
+	width:32px;
+	height:32px;
+	background:transparent url('images/icn-rules.png') no-repeat center center;
+}
+
+/*	update "logo" class */
+	
 .logo {
 	height:275px;
 	width:269px;
-	margin: 0 auto;
+	margin: -20px auto 0 auto;
 	background:transparent url('images/logo.png') no-repeat center center;
 }
 .main-title {
@@ -80,7 +93,6 @@ a.btn-start:visited {
 	font-weight:400;
 	text-decoration:none;
 	border-radius:37px;
-	cursor: pointer;
 }
 a.btn-start .team-number {
 	float:left;
@@ -99,8 +111,7 @@ a.btn-start .team-word {
 	width:74px;
 	height:16px;
 	line-height:16px;
-	font-size:11px;
-	text-transform:uppercase;
+	font-size:12px;
 	color:#fff;
 	font-weight:300;
 }
@@ -133,14 +144,6 @@ a.btn-start.team-4:hover {
 	margin:10px auto;
 	background:transparent url('images/icn-word-master.png') no-repeat 10px 10px;
 }
-.error {
-	font-size:13px;
-	color: #fff;
-	font-weight: 300;
-	color: #D66E6E;
-}
-
-/*End update classes*/
 
 input.code-box-start {
 	float:left;
@@ -195,7 +198,6 @@ a.btn-join:visited {
 	color:#fff;
 	font-size:15px;
 	text-decoration:none;
-	cursor: pointer;
 }
 a.btn-join:hover {
 	text-decoration:none;
@@ -226,7 +228,6 @@ a.btn-join:hover {
 	border-radius:5px;
 	margin:0.5%;
 	background:#FBF3E5;
-	cursor:pointer;
 }
 .card span {
 	display:block;
@@ -260,8 +261,6 @@ a.btn-join:hover {
 	font-weight:400;
 	background:#913218;
 }
-
-/*	Change citizen to orange */
 	
 .card.orange-on {
 	color:#fff;
@@ -275,8 +274,6 @@ a.btn-join:hover {
 	font-weight:400;
 	background:#9C5513;
 }
-
-/*	Add green style */
 	
 .card.green-on {
 	color:#fff;
@@ -290,15 +287,6 @@ a.btn-join:hover {
 	font-weight:400;
 	background:#0e7633;
 }
-
-/* Remove assassin styles */
-
-.card.assassin {
-	color:#fff;
-	background:#1e1b21;
-}
-
-/* -- */
 
 .top-line {
 	height:10px;
@@ -317,9 +305,6 @@ a.btn-join:hover {
 	margin:0 auto;
 	text-align:center;
 }
-
-/*	Update styles below: utilities, player-indicator, btn-end-turn. 
-	Delete red and blue player indicator images - they're now done through CSS */
 	
 .utilities a.logo-menu,
 .utilities a.logo-menu:link,
@@ -327,8 +312,8 @@ a.btn-join:hover {
 	float:left;
 	width:130px;
 	height:60px;
-	margin:0 10px 0 10px;
-	background:transparent url('images/btn-menu.png') no-repeat left center;
+	margin-right:30px;
+	background:transparent url('images/btn-menu.png') no-repeat center center;
 }
 .utilities .player-indicator {
 	float:left;
@@ -390,13 +375,10 @@ a.btn-join:hover {
 	color:#fff;
 	font-size:13px;
 	text-decoration:none;
-	cursor: pointer;
 }
 .utilities a.btn-end-turn:hover {
 	background:#6c548c;
 }
-
-/* End update styles */
 
 .utilities a.btn-restart,
 .utilities a.btn-restart:link,
@@ -417,7 +399,172 @@ a.btn-join:hover {
 }
 
 /*-----------------------------------------------------------------------------------*/
-/*	7.	Mobile version
+/*	Rules - add this section
+/*-----------------------------------------------------------------------------------*/
+
+.rules-header {
+	float:left;
+	text-align:center;
+	width:100%;
+	height:90px;
+	margin:0;
+	background:#fff6e5;
+}
+.rules-back {
+	float:left;
+	height:55px;
+	width:55px;
+	margin:20px;
+	cursor:pointer;
+	background:transparent url('images/btn-back-orange.png') no-repeat center center;
+}
+.rules-blank {
+	float:right;
+	height:55px;
+	width:55px;
+	margin:20px;
+}
+.rules-title {
+	height:50px;
+	line-height:50px;
+	font-size:40px;
+	color:#f34e05;
+	margin:20px auto;
+}
+.rules-body {
+	float:left;
+	width:100%;
+	text-align:center;
+	background:#ef6805;
+	padding:0;
+}
+.rules-container {
+	width:100%;
+	max-width:1200px;
+	margin:0 auto;
+}
+.column-text-sm {
+	float:left;
+	width:35%;
+	margin:0 2% 0 3%;
+}
+.column-text-lg {
+	float:left;
+	width:45%;
+	margin:40px 2% 0 3%;
+}
+.column-text-right {
+	float:right;
+	width:35%;
+	margin:20px 10% 0 0;
+}
+.rules-box {
+	float:left;
+	width:100%;
+	padding:30px 0;
+	border-radius:5px;
+	background:#fff6e5;
+	text-align:left;
+	margin-top:30px;
+}
+.rules-point {
+	float:left;
+	clear:both;
+	width:84%;
+	margin:6px 8%;
+	text-align:left;
+}
+.rules-point .point-text {
+	font-size:14px;
+	line-height:20px;
+	font-weight:500;
+	padding-left:40px;
+	min-height:30px;
+}
+.rules-point .point-text.point-1 {
+	background:transparent url('images/number-1.png') no-repeat left top;
+}
+.rules-point .point-text.point-2 {
+	background:transparent url('images/number-2.png') no-repeat left top;
+}
+.rules-point .point-text.point-3 {
+	background:transparent url('images/number-3.png') no-repeat left top;
+}
+.rules-point .point-text.point-4 {
+	background:transparent url('images/number-4.png') no-repeat left top;
+}
+.rules-box.tip {
+	width:80%;
+	margin:0 10% 0 10%;
+	font-style:italic;
+	font-size:13px;
+	line-height:18px;
+	color:#de4704;
+	padding:20px 0 0 0;
+}
+
+.rules-title-sm {
+	float:left;
+	width:100%;
+	height:30px;
+	line-height:30px;
+	vertical-align:middle;
+	text-align:center;
+	font-size:24px;
+	font-weight:500;
+	color:#fbf3e3;
+	margin:40px auto 0 auto;
+}
+.rules-title-lg {
+	float:left;
+	width:100%;
+	height:40px;
+	line-height:40px;
+	vertical-align:middle;
+	text-align:center;
+	font-size:34px;
+	font-weight:500;
+	color:#fbf3e3;
+	margin:40px auto 10px auto;
+}
+.column-img-lg {
+	float:left;
+	width:57%;
+	margin-right:3%;
+}
+.column-img-lg img {
+	display:block;
+	width:100%;
+	max-width:605px;
+	margin:0;
+}
+.column-img-chiefcard {
+	float:left;
+	width:50%;
+	margin-right:1%;
+	margin-top:20px;
+}
+.column-img-chiefcard img {
+	float:right;
+	width:100%;
+	max-width:585px;
+	margin:0;
+}
+.column-img-sm {
+	float:left;
+	width:42%;
+	max-width:301px;
+	margin:20px 3%;
+}
+.column-img-sm img {
+	display:block;
+	width:100%;
+	max-width:301px;
+	margin:0;
+}
+
+/*-----------------------------------------------------------------------------------*/
+/*	Mobile version
 /*-----------------------------------------------------------------------------------*/
 
 @media screen and (max-width: 980px) {
@@ -445,6 +592,72 @@ a.btn-join:hover {
 	.card span {
 		line-height:60px;
 	}
+	
+	/*	add the classes below for rules */
+	
+	.column-text-sm {
+		width:100%;
+		margin:0;
+		text-align:center;
+	}
+	.column-text-lg {
+		width:100%;
+		margin:0;
+		text-align:center;
+	}
+	.column-text-right {
+		width:100%;
+		margin:0;
+		text-align:center;
+	}
+	.rules-box {
+		width:90%;
+		margin:30px 5% 0 5%;
+	}
+	.rules-title-sm {
+		margin-top:30px;
+	}
+	.rules-title-lg {
+		margin:30px auto 10px auto;
+	}
+	.column-img-lg {
+		width:100%;
+		text-align:center;
+	}
+	.column-img-lg img {
+		margin:0 auto;
+	}
+	.column-img-sm {
+		width:100%;
+		text-align:center;
+	}
+	.column-img-sm img {
+		margin:0 auto;
+	}
+	.column-img-chiefcard {
+		width:100%;
+		margin-top:20px;
+		text-align:center;
+	}
+	.column-img-chiefcard img {
+		margin:0 auto;
+		float:none;
+	}
+	.rules-point {
+		float:left;
+		clear:both;
+		width:90%;
+		margin:10px 5%;
+		text-align:left;
+	}
+	.point-number {
+		float:left;
+		width:8%;
+		text-align:right;
+	}
+	
+	/*	End add classes for rules */
+	
 }
 @media screen and (max-width: 540px) {
 	.utilities-wrapper {
@@ -460,13 +673,14 @@ a.btn-join:hover {
 		float:left;
 		width:30px;
 		height:30px;
-		margin:10px 25px 0 15px;
+		margin:0 25px 0 15px;
 		background:transparent url('images/btn-menu.png') no-repeat left top;
 	}
 	.utilities a.btn-end-turn,
 	.utilities a.btn-end-turn:link,
 	.utilities a.btn-end-turn:visited {
 		margin:0 10px;
+		padding:0 15px;
 	}
 	.card-container {
 		margin:0 10px;
@@ -479,6 +693,20 @@ a.btn-join:hover {
 	.card span {
 		font-size:13px;
 		line-height:38px;
+	}
+}
+@media screen and (max-width: 420px) {
+	.player-indicator.blue-off {
+		display:none;
+	}
+	.player-indicator.green-off {
+		display:none;
+	}
+	.player-indicator.orange-off {
+		display:none;
+	}
+	.player-indicator.red-off {
+		display:none;
 	}
 }
 
@@ -499,16 +727,8 @@ only screen and (min-device-pixel-ratio: 2) {
 	.utilities a.logo-menu,
 	.utilities a.logo-menu:link,
 	.utilities a.logo-menu:visited {
-		background:transparent url('images/btn-menu@2x.png') no-repeat left center;
+		background:transparent url('images/btn-menu@2x.png') no-repeat center center;
 		background-size:115px 44px;
-	}
-	.utilities .player-indicator.blue {
-		background:transparent url('images/player-blue@2x.png') no-repeat left center;
-		background-size:16px 16px;
-	}
-	.utilities .player-indicator.red {
-		background:transparent url('images/player-red@2x.png') no-repeat left center;
-		background-size:16px 16px;
 	}
 	.utilities a.btn-restart,
 	.utilities a.btn-restart:link,
@@ -520,5 +740,25 @@ only screen and (min-device-pixel-ratio: 2) {
 		background:transparent url('images/icn-word-master@2x.png') no-repeat 10px 10px;
 		background-size:28px 33px;
 	}
+	
+	/* Add classes below */
+	
+	.rules-back {
+		background:transparent url('images/btn-back-orange@2x.png') no-repeat center center;
+		background-size:55px 55px;
+	}
+	a.rules,
+	a.rules:link,
+	a.rules:visited {
+		background:transparent url('images/icn-rules-lg@2x.png') no-repeat center center;
+		background-size:42px 42px;
+	}
+	a.rules.header-rules,
+	a.rules.header-rules:link,
+	a.rules.header-rules:visited {
+		background:transparent url('images/icn-rules@2x.png') no-repeat center center;
+		background-size:32px 32px;
+	}
+	
 
 }
