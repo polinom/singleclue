@@ -93,6 +93,7 @@ a.btn-start:visited {
 	font-weight:400;
 	text-decoration:none;
 	border-radius:37px;
+	cursor: pointer;
 }
 a.btn-start .team-number {
 	float:left;
@@ -198,10 +199,15 @@ a.btn-join:visited {
 	color:#fff;
 	font-size:15px;
 	text-decoration:none;
+	cursor: pointer;
 }
 a.btn-join:hover {
 	text-decoration:none;
 	background:#624a89;
+}
+.error {
+	color:#C77979;
+	font-size:13px;
 }
 
 /*-----------------------------------------------------------------------------------*/
@@ -305,15 +311,15 @@ a.btn-join:hover {
 	margin:0 auto;
 	text-align:center;
 }
-	
+
 .utilities a.logo-menu,
 .utilities a.logo-menu:link,
 .utilities a.logo-menu:visited {
 	float:left;
-	width:130px;
+	width:120px;
 	height:60px;
-	margin-right:30px;
-	background:transparent url('images/btn-menu.png') no-repeat center center;
+	margin:5px 30px 0 10px;
+	background:transparent url('images/btn-menu.png') no-repeat left top;
 }
 .utilities .player-indicator {
 	float:left;
@@ -375,6 +381,7 @@ a.btn-join:hover {
 	color:#fff;
 	font-size:13px;
 	text-decoration:none;
+	cursor: pointer;
 }
 .utilities a.btn-end-turn:hover {
 	background:#6c548c;
@@ -388,6 +395,7 @@ a.btn-join:hover {
 	width:20px;
 	margin:0 10px 0 0;
 	background:transparent url('images/btn-restart.png') no-repeat center center;
+	cursor: pointer;
 }
 .utilities .game-code {
 	float:right;
@@ -721,13 +729,13 @@ only screen and (min-device-pixel-ratio: 2) {
 		background-size:269px 275px;
 	}
 	.game-table {
-		background:transparent url('images/bkg-header@2x.png') no-repeat top center;
+		background:transparent url('images/bkg-header@2x.png') no-repeat center center;
 		background-size:1274px 51px;
 	}    
 	.utilities a.logo-menu,
 	.utilities a.logo-menu:link,
 	.utilities a.logo-menu:visited {
-		background:transparent url('images/btn-menu@2x.png') no-repeat center center;
+		background:transparent url('images/btn-menu@2x.png') no-repeat left top;
 		background-size:115px 44px;
 	}
 	.utilities a.btn-restart,

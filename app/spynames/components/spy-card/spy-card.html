@@ -6,6 +6,7 @@
 		<div class="player-indicator" ng-class="{'green-on': game.whosTurn == 'green', 'green-off': game.whosTurn != 'green'}"></div>
 		<div class="player-indicator" ng-if="game.teams > 2" ng-class="{'orange-on': game.whosTurn == 'orange', 'orange-off': game.whosTurn != 'orange'}"></div>
 		<div class="player-indicator" ng-if="game.teams > 3" ng-class="{'red-on': game.whosTurn == 'red', 'red-off': game.whosTurn != 'red'}"></div>
+		<a ui-sref="game.rules" class="rules header-rules"></a>
 		<div class="game-code">{{game.code}}</div>
 	</div>
 </div><!--utilities-wrapper-->

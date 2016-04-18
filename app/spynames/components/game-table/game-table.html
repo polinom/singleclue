@@ -7,6 +7,7 @@
         <div class="player-indicator" ng-if="game.teams > 2" ng-class="{'orange-on': game.whosTurn == 'orange', 'orange-off': game.whosTurn != 'orange'}"></div>
         <div class="player-indicator" ng-if="game.teams > 3" ng-class="{'red-on': game.whosTurn == 'red', 'red-off': game.whosTurn != 'red'}"></div>
       <a class="btn-end-turn" ng-click="game.whosTurn = getNextColor()">End Turn</a>
+      <a ui-sref="game.rules" class="rules header-rules"></a>
       <a ng-click="restartGame()" class="btn-restart"></a>
     <div class="game-code">{{game.code}}</div>
   </div>
