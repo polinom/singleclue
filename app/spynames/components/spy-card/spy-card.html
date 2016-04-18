@@ -1,7 +1,7 @@
 <div class="top-line"></div>
 <div class="utilities-wrapper">
 	<div class="utilities">
-		<a ui-sref="start" class="logo-menu"></a>
+		<a ui-sref="game.start" class="logo-menu"></a>
 		<div class="player-indicator" ng-class="{'blue-on': game.whosTurn == 'blue', 'blue-off': game.whosTurn != 'blue'}"></div>
 		<div class="player-indicator" ng-class="{'green-on': game.whosTurn == 'green', 'green-off': game.whosTurn != 'green'}"></div>
 		<div class="player-indicator" ng-if="game.teams > 2" ng-class="{'orange-on': game.whosTurn == 'orange', 'orange-off': game.whosTurn != 'orange'}"></div>

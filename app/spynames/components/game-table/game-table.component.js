@@ -32,6 +32,9 @@ angular.module('spynames').directive('gameTable', function () {
       };
 
       $scope.openCard = function (card) {
+        if (card.opened) {
+            return;
+        }
         card.opened = true;
         if ($scope.game.gameDone) {
             return;
@@ -42,9 +45,6 @@ angular.module('spynames').directive('gameTable', function () {
       };
 
       $scope.changeState = function (card) {
-
-        console.log('game ends = ');
-        console.log($scope.isGameEndCondition());
 
         $scope.game.winner = $scope.isGameEndCondition();
 

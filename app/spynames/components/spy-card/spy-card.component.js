@@ -10,7 +10,7 @@ angular.module('spynames').directive('spyCard', function () {
 
       $scope.game.$loaded().then(function () {
         if (!$scope.game.code) {
-              $state.go('start');
+              $state.go('game.start');
         }
       });
 

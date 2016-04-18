@@ -10,14 +10,49 @@ angular.module('spynames').
             }
         };
     }).
+    factory('authService', function ($firebaseAuth, dataService, $rootScope) {
+        var auth = $firebaseAuth(dataService.getRootRef());
 
-    factory('gameService', function (FIREBASE_ENDPOINT, dataService, $http, $firebaseObject, COLORS) {
+        auth.$onAuth(function(authData) {
+            $rootScope.authData = authData;
+        });
+
+        return {
+            /** This method returns a promise which is resolved or rejected when the authentication attempt is completed.
+             *  If successful, the promise will be fulfilled with an object containing authentication data about
+             *  the logged-in user. If unsuccessful, the promise will be rejected with an Error object.
+             * @returns {*|Promise.<Object>}
+             */
+            'authAnonymously': function () {
+              return auth.$authAnonymously();
+            },
+
+            'getAuth' : function () {
+                return auth.$getAuth();
+            },
+
+            'requireAuth' : function () {
+                var that = this;
+                return auth.$requireAuth().catch(function (er) {
+                    if (er === 'AUTH_REQUIRED') {
+                        return that.authAnonymously()
+                    } else {
+                        console.log(er);
+                    }
+                });
+            }
+        };
+    }).
+
+    factory('gameService', function (FIREBASE_ENDPOINT, dataService, $http, $firebaseObject, COLORS, authService) {
 
     var Game = $firebaseObject.$extend({
         getCardColor: function (color) {
             return this.cards ? this.cards.filter(function (card) { return card.color === color;}) : [];
         }
     });
+
+    var user = authService.getAuth();
 
     return {
 
@@ -38,6 +73,7 @@ angular.module('spynames').
                 var allCards = _.map(resp.data, function (val, key) {return {'name': val, 'id': key}});
                 var cards = that.getRandom25Cards(allCards, cardsPerPlayer);
                 var game = that.getGame(code);
+                console.log(game);
                 game.code = code.toString();
                 game.createdAt = new Date();
                 game.cards = cards;
@@ -46,13 +82,18 @@ angular.module('spynames').
                 game.winner = null;
                 game.cardsOpened = that.counters;
                 game.teams = teams;
+                game.uid = authService.getAuth().uid;
                 game.$save();
+
+                window.dataService = dataService;
+
                 return code.toString();
             });
         },
 
         'getAllCards': function () {
-            return $http({method: 'GET', url: FIREBASE_ENDPOINT + '/nouns.json'});
+            var auth = authService.getAuth();
+            return $http({method: 'GET', url: FIREBASE_ENDPOINT + '/nouns.json?auth=' + auth.token});
         },
 
         'getRandom25Cards': function (availableCards, cardsPerPlayer) {

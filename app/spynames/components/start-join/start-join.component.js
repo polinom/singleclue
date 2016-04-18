@@ -14,7 +14,7 @@ angular.module('spynames').directive('startJoin', function () {
 
         $scope.buttonJoinGame = function () {
           if ($scope.code.length === 4 && $scope.isNumber($scope.code)) {
-             $state.go('spyCard', {'code': $scope.code});
+             $state.go('game.spyCard', {'code': $scope.code});
           } else {
               $scope.error = 'Please enter a 4 digit code of an existing game.'
           }
@@ -22,7 +22,7 @@ angular.module('spynames').directive('startJoin', function () {
 
         this.startGame = function (players) {
             gameService.createGame(null, players).then(function (code) {
-                $state.go('gameTable', {'code': code})
+                $state.go('game.gameTable', {'code': code})
             })
         };
     }

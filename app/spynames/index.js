@@ -10,7 +10,7 @@ angular.module('spynames', ['ui.router', 'firebase']);
 // import components
 require('./components/game-table/game-table.component');
 require('./components/start-join/start-join.component');
-require('./components/join-game/join-game.component');
+require('./components/rules/rules.component.js');
 require('./components/spy-card/spy-card.component');
 require('./components/words-details/word-details.component');
 require('./components/words-list/words-list.component');
@@ -25,27 +25,36 @@ require('./filters/stringFilters');
 module.exports = angular.module('spynames').config(function ($urlRouterProvider, $stateProvider) {
 
   $stateProvider
-    .state('joinGame', {
-      url: '/join',
-      template: '<join-game></join-game>'
+    .state('game', {
+        abstract: true,
+        template: '<ui-view/>',
+        resolve: {
+          'authData': function (authService) {
+            return authService.requireAuth();
+          }
+        }
+      })
+    .state('game.rules', {
+      url: '/rules',
+      template: '<rules></rules>'
     })
-    .state('spyCard', {
+    .state('game.spyCard', {
       url: '/spy/:code',
       template: '<spy-card></spy-card>'
     })
-    .state('start', {
+    .state('game.start', {
       url: '/start',
       template: '<start-join></start-join>'
     })
-    .state('gameTable', {
+    .state('game.gameTable', {
       url: '/table/:code',
       template: '<game-table></game-table>'
     })
-    .state('words', {
+    .state('game.words', {
       url: '/words',
       template: '<words-list></words-list>'
     })
-    .state('wordDetails', {
+    .state('game.wordDetails', {
       url: '/words/:wordId',
       template: '<word-details></word-details>'
     });
